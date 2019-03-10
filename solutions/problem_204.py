@@ -1,3 +1,21 @@
+def number_of_nodes(tree=list()):
+
+  if not isinstance(tree, tuple):
+    return 1
+  elif isinstance(tree, tuple) and len(tree)==0:
+    return 0
+  else:
+    node, left, right = tree
+    return 1 + number_of_nodes(right) + number_of_nodes(left)
+
+#Tests
+
+assert number_of_nodes() == 0
+assert number_of_nodes((1, 2, 3)) == 3
+assert number_of_nodes((1, (3, 4, 5), (1,3, 4))) == 7
+
+# Object oriented solution
+
 class Node:
     def __init__(self):
         self.left = None
